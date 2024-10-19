@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KINTEK Technology CO.,LTD</title>
+
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/loading.css">
+    <!-- <link rel="stylesheet" href="img/kintek.png"> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Battambang:wght@100&family=Moul&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.js" type="text/javascript"></script> 
+    <script src="JS/script.js"></script>
+    <script src="JS/control.js"></script>
+
+</head>
+<body>
+    <div class="body">
+
+        <div class="profile_company">
+            <img src="IMG/kintek.png" alt="KINTEK-LOGO">
+            <h1 class="welcome-text">សូមស្វាគមន៍<br>NPIC SMART LAUNDRY</h1> 
+        </div>
+
+
+        <div class="contianer">
+            <!----------------------------------------------
+                -- Vending Machine --
+            ---------------------------------------------->
+            <div class="vending">   
+                <div class="title">
+                    <h2>ទិញទឹកសាប៊ូ និង ទឹកក្រអ៊ូប</h2>
+                </div>             
+                <!-- Vending Machine ONE -->
+                <div class="vending_1">
+                    <div class="soap" id="boxs">
+                            <div class="img">
+                                <img src="IMG/soap_ON.png" onclick="btn_soap()" alt="ម៉ាស៊ីនលក់សាប៊ូ" id="soap">
+                            </div>
+                            <div class="defin">
+                                <h3 class="processing" id="de_soap1">ម៉ាស៊ីនទំនេរ</h3>
+                            </div>
+                    </div>
+                                        
+                    <div class="fabric" id="boxs">                        
+                        <div class="img">
+                            <img src="IMG/fabric_ON.png" onclick="btn_fabric()" alt="ម៉ាស៊ីនលក់ទឺកក្រអូប" id="fabric">
+                        </div>
+                        <div class="defin">
+                            <h3 class="processing" id="de_fabric1">ម៉ាស៊ីនទំនេរ</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!----------------------------------------------
+                -- Washing Machine --
+            ---------------------------------------------->
+            <div class="washing">
+                <div class="type_9kg">
+                    <div class="title">
+                        <h2>ម៉ាស៊ីនបោកសម្លៀកបំពាក់ 9Kg</h2>
+                    </div>
+                    <!-- Washing Machine 9kg ONE -->
+                    <div class="washing_9kg_1" id="boxs">                        
+                        <div class="img">
+                            <img src="IMG/washing-machine_9kg_ON.png" onclick="btn_ws_9kg1()" alt="ម៉ាស៊ីនបោកសម្លៀកបំពាក់" id="washing_9kg_1">
+                        </div>
+                        <div class="defin">
+                            <h3 class="processing" id="de_wash9kg1">ម៉ាស៊ីនទំនេរ</h3>
+                        </div>
+                    </div>
+
+                    <!-- Washing Machine 9kg TWO -->
+                    <div class="washing_9kg_2" id="boxs">                        
+                        <div class="img">
+                            <img src="IMG/washing-machine_9kg_ON.png" onclick="btn_ws_9kg2()" alt="ម៉ាស៊ីនបោកសម្លៀកបំពាក់"  id="washing_9kg_2">
+                        </div>
+                        <div class="defin">
+                            <h3 class="processing" id="de_wash9kg2">ម៉ាស៊ីនទំនេរ</h3>
+                        </div>
+                    </div>
+
+                    <!-- Washing Machine 9kg THREE -->
+                    <div class="washing_9kg_3" id="boxs">                        
+                        <div class="img">
+                            <img src="IMG/washing-machine_9kg_ON.png" onclick="btn_ws_9kg3()" alt="ម៉ាស៊ីនបោកសម្លៀកបំពាក់" id="washing_9kg_3">
+                        </div>
+                        <div class="defin">
+                            <h3 class="processing" id="de_wash9kg3">ម៉ាស៊ីនទំនេរ</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="type_12kg">
+                    <div class="title">
+                        <h2>ម៉ាស៊ីនបោកសម្លៀកបំពាក់ 12Kg</h2>
+                    </div>
+                    <!-- Washing Machine 12kg One -->
+                    <div class="washing_12kg_1" id="boxs">                        
+                        <div class="img">
+                            <img src="IMG/washing-machine_12kg_ON.png" onclick="btn_ws_12kg1()" alt="ម៉ាស៊ីនបោកសម្លៀកបំពាក់" id="washing_12kg_1">
+                        </div>
+                        <div class="defin">
+                            <h3 class="processing" id="de_wash12kg1">ម៉ាស៊ីនទំនេរ</h3>
+                        </div>
+                    </div>
+
+                    <!-- Washing Machine 12kg Two -->
+                    <div class="washing_12kg_2" id="boxs">                        
+                        <div class="img">
+                            <img src="IMG/washing-machine_12kg_ON.png" onclick="btn_ws_12kg2()" alt="ម៉ាស៊ីនបោកសម្លៀកបំពាក់" id="washing_12kg_2">
+                        </div>
+                        <div class="defin">
+                            <h3 class="processing" id="de_wash12kg2">ម៉ាស៊ីនទំនេរ</h3>
+                        </div>
+                    </div>
+                </div>              
+            </div>
+
+            <!----------------------------------------------
+                -- Dyrer Machine --
+            ---------------------------------------------->
+            <div class="dryer">
+                <div class="title">
+                    <h2>ម៉ាស៊ីនសម្ងួតសម្លៀកបំពាក់</h2>
+                </div> 
+                <!-- Dryer Machine ONE -->
+                <div class="dryer_1" id="boxs">                   
+                    <div class="img">
+                        <img src="IMG/dryer_ON.png" onclick="btn_dryer1()" alt="ម៉ាស៊ីនសម្ងួតសម្លៀកបំពាក់" id="dryer_1">
+                    </div>
+                    <div class="defin">
+                        <h3 class="processing" id="de_dryer1">ម៉ាស៊ីនទំនេរ</h3>
+                    </div>
+                </div>
+
+                <!-- Dryer Machine TWO -->
+                <div class="dryer_2" id="boxs">                    
+                    <div class="img">
+                        <img src="IMG/dryer_ON.png" onclick="btn_dryer2()" alt="ម៉ាស៊ីនសម្ងួតសម្លៀកបំពាក់" id="dryer_2">
+                    </div>
+                    <div class="defin">
+                        <h3 class="processing" id="de_dryer2">ម៉ាស៊ីនទំនេរ</h3>
+                    </div>
+                </div>
+                
+            </div>
+
+            <!----------------------------------------------
+                -- Ironning Machine -- 
+            ---------------------------------------------->
+            <div class="ironing">
+                <div class="title">
+                    <h2>ម៉ាស៊ីនអ៊ុតសម្លៀកបំពាក់</h2>
+                </div> 
+                <!-- Ironning Station ONE -->
+                <div class="ironing_1" id="boxs">
+                    
+                    <div class="img">
+                        <img src="IMG/ironing-service_ON.png" onclick="btn_ironing1()" alt="ម៉ាស៊ីនអ៊ុតសម្លៀកបំពាក់" id="ironing_1">
+                    </div>
+                    <div class="defin">
+                        <h3 class="processing" id="de_ironing1">ម៉ាស៊ីនទំនេរ</h3>
+                    </div>
+                </div>
+
+                 <!-- Ironning Station TWO  -->
+                <div class="ironing_2" id="boxs">                    
+                    <div class="img">
+                        <img src="IMG/ironing-service_ON.png" onclick="btn_ironing2()" alt="ម៉ាស៊ីនអ៊ុតសម្លៀកបំពាក់" id="ironing_2">
+                    </div>
+                    <div class="defin">
+                        <h3 class="processing" id="de_ironing2">ម៉ាស៊ីនទំនេរ</h3>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+       
+
+        <div id="overlay" class="overlay">
+            <div class="overlay-content">
+            <div class="loader">
+                <div class="loader__circle"></div>
+                <div class="loader__circle"></div>
+                <div class="loader__circle"></div>
+                <div class="loader__circle"></div>
+            </div>
+            <!-- <button class="cancel-btn" id="cancelBtn">Cancel</button> -->
+        </div>
+
+    </div>
+
+
+    
+
+    <script>
+        document.querySelector('#boxs').addEventListener('touchstart', function() {
+             this.style.backgroundColor = 'yellow';
+        });
+
+        document.querySelector('#boxs').addEventListener('touchend', function() {
+             this.style.backgroundColor = ''; // Reset the background color after touch
+        });
+    </script>
+</body>
+</html>
