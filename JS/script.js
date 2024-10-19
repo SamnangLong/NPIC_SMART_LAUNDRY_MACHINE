@@ -37,19 +37,13 @@ function onConnect() {
 
     // Subscribe to the touch topics
     const topic_Touch = 'touch';
-    client.subscribe(topic_Touch); 
-
-    console.log("Subscribed to topics: touch");
+    client.subscribe(topic_Touch);
     
-    // Subscribe to info topics
+    
+    // Subscribe to confirm topics
     const topic_Confirm = 'confirm';
     client.subscribe(topic_Confirm);
 
-    // Subscribe to the breset
-    const topic_Breset = 'breset';
-    client.subscribe(topic_Breset);
-
-    console.log("Subscribed to topics: touch, confirm, breset");
 }
 
 
@@ -115,7 +109,7 @@ function hideLoadingOverlay() {
 // Function to start the 30-second timeout for hiding the overlay
 function startOverlayTimer() {
     clearTimeout(hideOverlayTimeout); // Clear any existing timeout
-    hideOverlayTimeout = setTimeout(hideLoadingOverlay, 40000); // Set a 30-second timeout to hide the overlay
+    hideOverlayTimeout = setTimeout(hideLoadingOverlay, 10000); // Set a 30-second timeout to hide the overlay
     console.log('30-second timer started'); // Debugging log
 }
 
@@ -147,47 +141,104 @@ function onMessageArrived(message) {
             buttonStates[button] = parseInt(value); // Store the button state
         });
 
+
+        console.log("topics: touch, message:", message.payloadString); 
+
         // ---- MACHINE SOAP
         if (buttonStates.B1 === 1) {
             document.querySelector('.soap').style.backgroundColor = 'gray';
             document.querySelector('#soap').style.opacity = '0.5';
             document.querySelector('#soap').style.pointerEvents = 'none';
+            document.querySelector('#de_soap1').innerHTML = 'ម៉ាស៊ីនរវល់';   // Machine is busy (in Khmer) 
         }   
+        if(buttonStates.B1 === 0){
+            document.querySelector('.soap').style.backgroundColor = '';
+            document.querySelector('#soap').style.opacity = '';
+            document.querySelector('#soap').style.pointerEvents = '';
+            document.querySelector('#de_soap1').innerHTML = 'ម៉ាស៊ីនទំនេរ';
+        }
+        
+        
 
         // ---- MACHINE FABRIC
         if (buttonStates.B2 === 1) {
             document.querySelector('.fabric').style.backgroundColor = 'gray';
             document.querySelector('#fabric').style.opacity = '0.5';
             document.querySelector('#fabric').style.pointerEvents = 'none';
+            document.querySelector('#de_soap1').innerHTML = 'ម៉ាស៊ីនរវល់';   // Machine is busy (in Khmer) 
+        }   
+        if(buttonStates.B2 === 0){
+            document.querySelector('.fabric').style.backgroundColor = '';
+            document.querySelector('#fabric').style.opacity = '';
+            document.querySelector('#fabric').style.pointerEvents = '';
+            document.querySelector('#de_soap1').innerHTML = 'ម៉ាស៊ីនទំនេរ';
         }
+
+
 
         // ---- MACHINE WASHING 9KG 1
         if (buttonStates.B3 === 1) {
             document.querySelector('.washing_9kg_1').style.backgroundColor = 'gray';
             document.querySelector('#washing_9kg_1').style.opacity = '0.5';
             document.querySelector('#washing_9kg_1').style.pointerEvents = 'none';
+            document.querySelector('#de_wash9kg1').innerHTML = 'ម៉ាស៊ីនរវល់';   // Machine is busy (in Khmer) 
+        }   
+        if(buttonStates.B3 === 0){
+            document.querySelector('.washing_9kg_1').style.backgroundColor = '';
+            document.querySelector('#washing_9kg_1').style.opacity = '';
+            document.querySelector('#washing_9kg_1').style.pointerEvents = '';
+            document.querySelector('#de_wash9kg1').innerHTML = 'ម៉ាស៊ីនទំនេរ'; 
         }
+
+
 
         // ---- MACHINE WASHING 9KG 2
         if (buttonStates.B4 === 1) {
             document.querySelector('.washing_9kg_2').style.backgroundColor = 'gray';
             document.querySelector('#washing_9kg_2').style.opacity = '0.5';
             document.querySelector('#washing_9kg_2').style.pointerEvents = 'none';
+            document.querySelector('#de_wash9kg2').innerHTML = 'ម៉ាស៊ីនរវល់';   // Machine is busy (in Khmer) 
+        }   
+        if(buttonStates.B4 === 0){
+            document.querySelector('.washing_9kg_2').style.backgroundColor = '';
+            document.querySelector('#washing_9kg_2').style.opacity = '';
+            document.querySelector('#washing_9kg_2').style.pointerEvents = '';
+            document.querySelector('#de_wash9kg2').innerHTML = 'ម៉ាស៊ីនទំនេរ';  
         }
+
+
 
         // ---- MACHINE WASHING 9KG 3
         if (buttonStates.B5 === 1) {
             document.querySelector('.washing_9kg_3').style.backgroundColor = 'gray';
             document.querySelector('#washing_9kg_3').style.opacity = '0.5';
             document.querySelector('#washing_9kg_3').style.pointerEvents = 'none';
+            document.querySelector('#de_wash9kg3').innerHTML = 'ម៉ាស៊ីនរវល់';   // Machine is busy (in Khmer) 
+        }   
+        if(buttonStates.B5 === 0){
+            document.querySelector('.washing_9kg_3').style.backgroundColor = '';
+            document.querySelector('#washing_9kg_3').style.opacity = '';
+            document.querySelector('#washing_9kg_3').style.pointerEvents = '';
+            document.querySelector('#de_wash9kg3').innerHTML = 'ម៉ាស៊ីនទំនេរ';
         }
+
+
 
         // ---- MACHINE WASHING 12KG 1
         if (buttonStates.B6 === 1) {
             document.querySelector('.washing_12kg_1').style.backgroundColor = 'gray';
             document.querySelector('#washing_12kg_1').style.opacity = '0.5';
             document.querySelector('#washing_12kg_1').style.pointerEvents = 'none';
+            document.querySelector('#de_wash12kg1').innerHTML = 'ម៉ាស៊ីនរវល់';   // Machine is busy (in Khmer) 
+        }   
+        if(buttonStates.B6 === 0){
+            document.querySelector('.washing_12kg_1').style.backgroundColor = '';
+            document.querySelector('#washing_12kg_1').style.opacity = '';
+            document.querySelector('#washing_12kg_1').style.pointerEvents = '';
+            document.querySelector('#de_wash12kg1').innerHTML = 'ម៉ាស៊ីនទំនេរ';  
         }
+
+
 
 
         // ---- MACHINE WASHING 12KG 2
@@ -195,35 +246,80 @@ function onMessageArrived(message) {
             document.querySelector('.washing_12kg_2').style.backgroundColor = 'gray';
             document.querySelector('#washing_12kg_2').style.opacity = '0.5';
             document.querySelector('#washing_12kg_2').style.pointerEvents = 'none';
+            document.querySelector('#de_wash12kg2').innerHTML = 'ម៉ាស៊ីនរវល់';   // Machine is busy (in Khmer) 
+        }   
+        if(buttonStates.B7 === 0){
+            document.querySelector('.washing_12kg_2').style.backgroundColor = '';
+            document.querySelector('#washing_12kg_2').style.opacity = '';
+            document.querySelector('#washing_12kg_2').style.pointerEvents = '';
+            document.querySelector('#de_wash12kg2').innerHTML = 'ម៉ាស៊ីនទំនេរ';
         }
+
+
 
         // ---- MACHINE DRYER 1
         if (buttonStates.B8 === 1) {
             document.querySelector('.dryer_1').style.backgroundColor = 'gray';
             document.querySelector('#dryer_1').style.opacity = '0.5';
             document.querySelector('#dryer_1').style.pointerEvents = 'none';
+            document.querySelector('#de_dryer1').innerHTML = 'ម៉ាស៊ីនរវល់';   // Machine is busy (in Khmer) 
+        }   
+        if(buttonStates.B8 === 0){
+            document.querySelector('.dryer_1').style.backgroundColor = '';
+            document.querySelector('#dryer_1').style.opacity = '';
+            document.querySelector('#dryer_1').style.pointerEvents = '';
+            document.querySelector('#de_dryer1').innerHTML = 'ម៉ាស៊ីនទំនេរ';
         }
+
+
 
         // ---- MACHINE DRYER 2
         if (buttonStates.B9 === 1) {
             document.querySelector('.dryer_2').style.backgroundColor = 'gray';
             document.querySelector('#dryer_2').style.opacity = '0.5';
             document.querySelector('#dryer_2').style.pointerEvents = 'none';
+            document.querySelector('#de_dryer2').innerHTML = 'ម៉ាស៊ីនរវល់';   // Machine is busy (in Khmer) 
+        }   
+        if(buttonStates.B9 === 0){
+            document.querySelector('.dryer_2').style.backgroundColor = '';
+            document.querySelector('#dryer_2').style.opacity = '';
+            document.querySelector('#dryer_2').style.pointerEvents = '';
+            document.querySelector('#de_dryer2').innerHTML = 'ម៉ាស៊ីនទំនេរ'; 
         }
+
+
 
         // ---- MACHINE IRONNING 1
         if (buttonStates.B10 === 1) {
             document.querySelector('.ironing_1').style.backgroundColor = 'gray';
             document.querySelector('#ironing_1').style.opacity = '0.5';
             document.querySelector('#ironing_1').style.pointerEvents = 'none';
+            document.querySelector('#de_ironing1').innerHTML = 'ម៉ាស៊ីនរវល់';   // Machine is busy (in Khmer) 
+        }   
+        if(buttonStates.B10 === 0){
+            document.querySelector('.ironing_1').style.backgroundColor = '';
+            document.querySelector('#ironing_1').style.opacity = '';
+            document.querySelector('#ironing_1').style.pointerEvents = '';
+            document.querySelector('#de_ironing1').innerHTML = 'ម៉ាស៊ីនទំនេរ'; 
         }
+
+
 
         // ---- MACHINE IRONNING 2
         if (buttonStates.B11 === 1) {
             document.querySelector('.ironing_2').style.backgroundColor = 'gray';
             document.querySelector('#ironing_2').style.opacity = '0.5';
             document.querySelector('#ironing_2').style.pointerEvents = 'none';
+            document.querySelector('#de_ironing2').innerHTML = 'ម៉ាស៊ីនរវល់';   // Machine is busy (in Khmer) 
+        }   
+        if(buttonStates.B11 === 0){
+            document.querySelector('.ironing_2').style.backgroundColor = '';
+            document.querySelector('#ironing_2').style.opacity = '';
+            document.querySelector('#ironing_2').style.pointerEvents = '';
+            document.querySelector('#de_ironing2').innerHTML = 'ម៉ាស៊ីនទំនេរ';  
         }
+
+
     }
 
 
@@ -244,11 +340,13 @@ function onMessageArrived(message) {
         const [button, state] = button_info.trim().split('=');
         const buttonState = parseInt(state); // Convert to integer (0 or 1)
 
+        console.log("topics: confirm, message:", message.payloadString); 
+
         
         // ---- MACHINE SOAP
         if (button === 'BB1' && buttonState === 1 && device_name === client.clientId) {
 
-            document.querySelector('#de_soap1').innerHTML = 'ម៉ាស៊ីនរវល់';   // Machine is busy (in Khmer) 
+            document.querySelector('.soap').style.backgroundColor = 'green';
             window.location.href = 'https://link.payway.com.kh/ABAPAYwU302205p';    // Redirect to the specified link
 
         }    
@@ -256,35 +354,35 @@ function onMessageArrived(message) {
         // ---- MACHINE FABRIC
         if (button === 'BB2' && buttonState === 1 && device_name === client.clientId) {
             
-            document.querySelector('#de_fabric1').innerHTML = 'ម៉ាស៊ីនរវល់'; // Machine is busy (in Khmer) 
+            document.querySelector('.fabric').style.backgroundColor = 'green';
             window.location.href = 'https://link.payway.com.kh/ABAPAYwU302205p';    // Redirect to the specified link
         }    
 
         // ---- MACHINE WASHING 9KG 1
         if (button === 'BB3' && buttonState === 1 && device_name === client.clientId) {
            
-            document.querySelector('#de_wash9kg1').innerHTML = 'ម៉ាស៊ីនរវល់';    // Machine is busy (in Khmer) 
+            document.querySelector('.washing_9kg_1').style.backgroundColor = 'green';
             window.location.href = 'https://link.payway.com.kh/ABAPAYwU302205p';    // Redirect to the specified link
         }    
 
         // ---- MACHINE WASHING 9KG 2
         if (button === 'BB4' && buttonState === 1 && device_name === client.clientId) {
            
-            document.querySelector('#de_wash9kg2').innerHTML = 'ម៉ាស៊ីនរវល់';    // Machine is busy (in Khmer) 
+            document.querySelector('.washing_9kg_2').style.backgroundColor = 'green';
             window.location.href = 'https://link.payway.com.kh/ABAPAYwU302205p';    // Redirect to the specified link
         }     
 
         // ---- MACHINE WASHING 9KG 3
         if (button === 'BB5' && buttonState === 1 && device_name === client.clientId) {
             
-            document.querySelector('#de_wash9kg3').innerHTML = 'ម៉ាស៊ីនរវល់';    // Machine is busy (in Khmer) 
+            document.querySelector('.washing_9kg_3').style.backgroundColor = 'green';
             window.location.href = 'https://link.payway.com.kh/ABAPAYwU302205p';    // Redirect to the specified link
         }    
 
         // ---- MACHINE WASHING 12KG 1
         if (button === 'BB6' && buttonState === 1 && device_name === client.clientId) {
             
-            document.querySelector('#de_wash12kg1').innerHTML = 'ម៉ាស៊ីនរវល់';   // Machine is busy (in Khmer) 
+            document.querySelector('.washing_12kg_1').style.backgroundColor = 'green';
             window.location.href = 'https://link.payway.com.kh/ABAPAYwU302205p';    // Redirect to the specified link
         }    
 
@@ -292,146 +390,39 @@ function onMessageArrived(message) {
         // ---- MACHINE WASHING 12KG 1
         if (button === 'BB7' && buttonState === 1 && device_name === client.clientId) {
            
-            document.querySelector('#de_wash12kg2').innerHTML = 'ម៉ាស៊ីនរវល់';   // Machine is busy (in Khmer) 
+            document.querySelector('.washing_12kg_2').style.backgroundColor = 'green';
             window.location.href = 'https://link.payway.com.kh/ABAPAYwU302205p';    // Redirect to the specified link
         }    
 
         // ---- MACHINE DRYER 1
         if (button === 'BB8' && buttonState === 1 && device_name === client.clientId) {
             
-            document.querySelector('#de_dryer1').innerHTML = 'ម៉ាស៊ីនរវល់';  // Machine is busy (in Khmer) 
+            document.querySelector('.dryer_1').style.backgroundColor = 'green';
             window.location.href = 'https://link.payway.com.kh/ABAPAYwU302205p';    // Redirect to the specified link
         }    
 
         // ---- MACHINE DRYER 2
         if (button === 'BB9' && buttonState === 1 && device_name === client.clientId) {
            
-            document.querySelector('#de_dryer2').innerHTML = 'ម៉ាស៊ីនរវល់';  // Machine is busy (in Khmer) 
+            document.querySelector('.dryer_2').style.backgroundColor = 'green';
             window.location.href = 'https://link.payway.com.kh/ABAPAYwU302205p';    // Redirect to the specified link
         }    
 
         // ---- MACHINE IRONNING 1
         if (button === 'BB10' && buttonState === 1 && device_name === client.clientId) {
            
-            document.querySelector('#de_ironing1').innerHTML = 'ម៉ាស៊ីនរវល់';    // Machine is busy (in Khmer) 
+            document.querySelector('.ironing_1').style.backgroundColor = 'green';
             window.location.href = 'https://link.payway.com.kh/ABAPAYwU302205p';    // Redirect to the specified link
         }    
 
         // ---- MACHINE IRONNING 2
         if (button === 'BB11' && buttonState === 1 && device_name === client.clientId) {
            
-            document.querySelector('#de_ironing2').innerHTML = 'ម៉ាស៊ីនរវល់';    // Machine is busy (in Khmer) 
+            document.querySelector('.ironing_2').style.backgroundColor = 'green';
             window.location.href = 'https://link.payway.com.kh/ABAPAYwU302205p';    // Redirect to the specified link
         }    
         // Add similar logic for other buttons as needed...
     }
-
-
-
-
-
-    // -----------------------------------------------------------------------
-    // --- RESET BUTTON
-    // -----------------------------------------------------------------------
-    if (message.destinationName === 'breset') {
-        // Message format: "Button=1" or "Button=2" or "Button=3", etc.
-        const button_info = message.payloadString.split(','); // e.g., "Button=1"
-    
-        // Loop through the button info (if multiple messages are sent together)
-        button_info.forEach(info => {
-            // Extract button info (e.g., "Button=1")
-            const [button, state] = info.trim().split('='); // Split into button and state
-            const buttonState = parseInt(state); // Convert to integer (button number)
-    
-            // Check which button was clicked and update the UI accordingly
-            switch (buttonState) {
-                case 1:
-                    // Update UI for soap button
-                    document.querySelector('.soap').style.backgroundColor = '';
-                    document.querySelector('#soap').style.opacity = '';
-                    document.querySelector('#soap').style.pointerEvents = '';
-                    break;
-    
-                case 2:
-                    // Update UI for fabric button
-                    document.querySelector('.fabric').style.backgroundColor = '';
-                    document.querySelector('#fabric').style.opacity = '';
-                    document.querySelector('#fabric').style.pointerEvents = '';
-                    break;
-    
-                case 3:
-                    // Update UI for washing 9kg machine
-                    document.querySelector('.washing_9kg_1').style.backgroundColor = '';
-                    document.querySelector('#washing_9kg_1').style.opacity = '';
-                    document.querySelector('#washing_9kg_1').style.pointerEvents = '';
-                    break;
-    
-                case 4:
-                    // Update UI for washing 9kg machine
-                    document.querySelector('.washing_9kg_2').style.backgroundColor = '';
-                    document.querySelector('#washing_9kg_2').style.opacity = '';
-                    document.querySelector('#washing_9kg_2').style.pointerEvents = '';
-                    break;
-    
-                case 5:
-                    // Update UI for washing 9kg machine
-                    document.querySelector('.washing_9kg_3').style.backgroundColor = '';
-                    document.querySelector('#washing_9kg_3').style.opacity = '';
-                    document.querySelector('#washing_9kg_3').style.pointerEvents = '';
-                    break;
-    
-                case 6:
-                    // Update UI for washing 9kg machine
-                    document.querySelector('.washing_12kg_1').style.backgroundColor = '';
-                    document.querySelector('#washing_12kg_1').style.opacity = '';
-                    document.querySelector('#washing_12kg_1').style.pointerEvents = '';
-                    break;
-                
-    
-                case 7:
-                    // Update UI for washing 9kg machine
-                    document.querySelector('.washing_12kg_2').style.backgroundColor = '';
-                    document.querySelector('#washing_12kg_2').style.opacity = '';
-                    document.querySelector('#washing_12kg_2').style.pointerEvents = '';
-                    break;
-    
-                case 8:
-                    // Update UI for washing 9kg machine
-                    document.querySelector('.dryer_1').style.backgroundColor = '';
-                    document.querySelector('#dryer_1').style.opacity = '';
-                    document.querySelector('#dryer_1').style.pointerEvents = '';
-                    break;
-    
-                case 9:
-                    // Update UI for washing 9kg machine
-                    document.querySelector('.dryer_2').style.backgroundColor = '';
-                    document.querySelector('#dryer_2').style.opacity = '';
-                    document.querySelector('#dryer_2').style.pointerEvents = '';
-                    break;
-    
-                case 10:
-                    // Update UI for washing 9kg machine
-                    document.querySelector('.ironing_1').style.backgroundColor = '';
-                    document.querySelector('#ironing_1').style.opacity = '';
-                    document.querySelector('#ironing_1').style.pointerEvents = '';
-                    break;
-    
-                case 11:
-                    // Update UI for washing 9kg machine
-                    document.querySelector('.ironing_2').style.backgroundColor = '';
-                    document.querySelector('#ironing_2').style.opacity = '';
-                    document.querySelector('#ironing_2').style.pointerEvents = '';
-                    break;
-                
-                
-                default:
-                    console.log("Unknown button state received: " + buttonState);
-            }
-        });
-    }
-    
-
-
 
     
 }
