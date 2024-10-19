@@ -165,13 +165,13 @@ function onMessageArrived(message) {
             document.querySelector('.fabric').style.backgroundColor = 'gray';
             document.querySelector('#fabric').style.opacity = '0.5';
             document.querySelector('#fabric').style.pointerEvents = 'none';
-            document.querySelector('#de_soap1').innerHTML = 'ម៉ាស៊ីនរវល់';   // Machine is busy (in Khmer) 
+            document.querySelector('#de_fabric1').innerHTML = 'ម៉ាស៊ីនរវល់';   // Machine is busy (in Khmer) 
         }   
         if(buttonStates.B2 === 0){
             document.querySelector('.fabric').style.backgroundColor = '';
             document.querySelector('#fabric').style.opacity = '';
             document.querySelector('#fabric').style.pointerEvents = '';
-            document.querySelector('#de_soap1').innerHTML = 'ម៉ាស៊ីនទំនេរ';
+            document.querySelector('#de_fabric1').innerHTML = 'ម៉ាស៊ីនទំនេរ';
         }
 
 
