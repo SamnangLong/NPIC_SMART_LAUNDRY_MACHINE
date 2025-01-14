@@ -11,7 +11,7 @@ setTimeout(function() {
 function ConnectToMQTT() {
     const randomClientNumber = Math.floor(Math.random() * 1000) + 1;
     const clientID = 'Device_Id' + randomClientNumber; // Generate unique user name
-    const host = 'blithesome-chiropractor.cloudmqtt.com';
+    const host = 'pf-dg4vwima2obych9mhg5z.cedalo.cloud';
     const port = 443;
 
     client = new Paho.MQTT.Client(host, Number(port), clientID);
@@ -24,8 +24,8 @@ function ConnectToMQTT() {
     client.connect({
         onSuccess: onConnect,
         useSSL: true,
-        userName: 'rwufzabs',
-        password: 'kVZNw5Tuj6e5',
+        userName: 'Nang',
+        password: 'Admin1234',
         mqttVersion: 4
     });
 }
